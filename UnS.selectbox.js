@@ -3,7 +3,7 @@
  * @Date:   2015-01-12 14:14:18
  * @git: https://github.com/the-unsoul/uns.selectbox.js
  * @Last Modified by:   UnS
- * @Last Modified time: 2015-02-04 10:54:14
+ * @Last Modified time: 2015-02-04 11:08:50
  */
 
 (function( $ ) {
@@ -23,31 +23,31 @@
 	    	_intance.dropdownOptions = _intance.parent().find('.opts-stored').html();
 	    }
 
-	    _intance.hideOptions = function(selector) {
-			// _intance.empty();
-		    // _intance.append(_intance.dropdownOptions);
+		_intance.hideShowOptions = function(hide, show){
+			if(typeof show === 'undefined'){
+				_intance.empty();
+			    _intance.append(_intance.dropdownOptions);
 
-		    _intance.find(selector).addClass('hidden-option');
-		    // _intance.find('.hidden-option').detach();
-		};
-		_intance.showHideOptions = function(show, hide){
-			_intance.empty();
-		    _intance.append(_intance.dropdownOptions);
-
-			_intance.find(hide).addClass('hidden-option', function() {
-				setTimeout(function() {
-					_intance.find(show).removeClass('hidden-option', function() {
-						setTimeout(function() {
-							_intance.find('.hidden-option').detach();	
-						}, 100);
-					});
-				}, 100);
-				
-			});
+			    _intance.find(hide).addClass('hidden-option');
+			    _intance.find('.hidden-option').detach();
+			}
+			else{
+				_intance.empty();
+			    _intance.append(_intance.dropdownOptions);
+				_intance.find(hide).addClass('hidden-option', function() {
+					setTimeout(function() {
+						_intance.find(show).removeClass('hidden-option', function() {
+							setTimeout(function() {
+								_intance.find('.hidden-option').detach();	
+							}, 100);
+						});
+					}, 100);
+					
+				});
+			}
 		};
 		return _intance;
 	};
-	
 
 	var oAddClass = $.fn.addClass;
     $.fn.addClass = function () {
