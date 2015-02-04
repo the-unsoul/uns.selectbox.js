@@ -12,5 +12,10 @@ var tdd = $().initDropdown($selectBox);
 ```
 
 ```
+// @hide-selector, the selector of elements that will be hide in the select box
+// @show-selector, the selector of elements that will be show in the select box
 tdd.showHideOptions('.hide-selectors', '.show-selector');
+
+// @hide-selector, the selector of elements that will be hide in the select box
+tdd.showHideOptions('.hide-selectors');
 ```
