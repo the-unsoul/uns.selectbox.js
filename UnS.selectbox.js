@@ -3,8 +3,12 @@
  * @Date:   2015-01-12 14:14:18
  * @git: https://github.com/the-unsoul/uns.selectbox.js
  * @Last Modified by:   UnS
- * @Last Modified time: 2015-02-04 11:08:50
+ * @Last Modified time: 2015-02-05 14:35:31
  */
+
+//////////
+// note //
+//////////
 
 (function( $ ) {
 	var _intance ;
@@ -27,23 +31,27 @@
 			if(typeof show === 'undefined'){
 				_intance.empty();
 			    _intance.append(_intance.dropdownOptions);
+			    (function(_int) {
+			    	_intance.find(hide).addClass('hidden-option');
+			    	_intance.find('.hidden-option').detach();	
+			    })(_intance);
 
-			    _intance.find(hide).addClass('hidden-option');
-			    _intance.find('.hidden-option').detach();
+			    
 			}
 			else{
 				_intance.empty();
 			    _intance.append(_intance.dropdownOptions);
-				_intance.find(hide).addClass('hidden-option', function() {
-					setTimeout(function() {
-						_intance.find(show).removeClass('hidden-option', function() {
-							setTimeout(function() {
-								_intance.find('.hidden-option').detach();	
-							}, 100);
-						});
-					}, 100);
-					
-				});
+				(function(_int) {
+					_int.find(hide).addClass('hidden-option', function() {
+				    	setTimeout(function() {
+							_int.find(show).removeClass('hidden-option', function() {
+								setTimeout(function() {
+									_int.find('.hidden-option').detach();	
+								}, 0);
+							});
+						}, 0);	
+					});
+			   	})(_intance);
 			}
 		};
 		return _intance;
